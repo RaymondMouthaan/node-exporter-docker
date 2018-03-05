@@ -4,7 +4,7 @@ COPY tmp/qemu-arm-static /usr/bin/qemu-arm-static
 MAINTAINER Raymond Mouthaan <raymondmmouthaan@gmail.com>
 
 ARG ARCH=armv7
-ARG VERSION=v0.15.2
+ARG VERSION=0.15.2
 
 RUN apk --no-cache add --virtual build-dependencies wget ca-certificates \
     && mkdir -p /tmp/install /tmp/dist \
