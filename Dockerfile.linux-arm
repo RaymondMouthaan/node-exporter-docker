@@ -1,1 +1,20 @@
+FROM arm32v6/alpine
+COPY tmp/qemu-arm-static /usr/bin/qemu-arm-static
 
+MAINTAINER Raymond Mouthaan <raymondmmouthaan@gmail.com>
+
+ARG ARCH=armv7
+ARG VERSION=v0.15.2
+
+RUN apk --no-cache add --virtual build-dependencies wget ca-certificates \
+    && mkdir -p /tmp/install /tmp/dist \
+    && wget -O /tmp/install/node_exporter.tar.gz https://github.com/prometheus/node_exporter/releases/download/v$VERSION/node_exporter-$VERSION.linux-$ARCH.tar.gz \
+    && apk del build-dependencies \
+    && apk add --no-cache libc6-compat \
+    && cd /tmp/install \
+    && tar --strip-components=1 -xzf node_exporter.tar.gz \
+    && mv node_exporter /bin/node_exporter \
+    && rm -rf /tmp/install
+
+EXPOSE     9100
+ENTRYPOINT [ "/bin/node_exporter" ]
