@@ -16,5 +16,11 @@ RUN apk --no-cache add --virtual build-dependencies wget ca-certificates \
     && mv node_exporter /bin/node_exporter \
     && rm -rf /tmp/install
 
+
+chmod +x ./docker-entrypoint.sh
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+
 EXPOSE     9100
-ENTRYPOINT [ "/bin/node_exporter" ]
+
+ENTRYPOINT  [ "/docker-entrypoint.sh" ]
+CMD [ "/bin/node_exporter" ]
