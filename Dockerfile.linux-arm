@@ -17,8 +17,9 @@ RUN apk --no-cache add --virtual build-dependencies wget ca-certificates \
     && rm -rf /tmp/install
 
 
-chmod +x ./docker-entrypoint.sh
+
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
 
 EXPOSE     9100
 
