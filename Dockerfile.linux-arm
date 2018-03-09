@@ -18,6 +18,7 @@ RUN apk --no-cache add --virtual build-dependencies wget ca-certificates \
 
 
 RUN mkdir /etc/node-exporter
+ENV NODE_EXPORTER_BIN=/bin/node_exporter
 
 COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 RUN chmod +x /docker-entrypoint.sh
