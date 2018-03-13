@@ -14,16 +14,17 @@ RUN apk --no-cache add --virtual build-dependencies wget ca-certificates \
     && cd /tmp/install \
     && tar --strip-components=1 -xzf node_exporter.tar.gz \
     && mv node_exporter /bin/node_exporter \
+    && mkdir /etc/node-exporter \
     && rm -rf /tmp/install
 
+ENV NODE_ID=none
 
-RUN mkdir /etc/node-exporter
-ENV NODE_EXPORTER_BIN=/bin/node_exporter
+USER root
 
-COPY ./docker-entrypoint.sh /docker-entrypoint.sh
-RUN chmod +x /docker-entrypoint.sh
+COPY ./docker-entrypoint.sh /etc/node-exporter/docker-entrypoint.sh
+RUN chmod +x /etc/node-exporter/docker-entrypoint.sh
 
 EXPOSE     9100
 
-ENTRYPOINT  [ "/docker-entrypoint.sh" ]
+ENTRYPOINT  [ "/etc/node-exporter/docker-entrypoint.sh" ]
 CMD [ "/bin/node_exporter" ]
