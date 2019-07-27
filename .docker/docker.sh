@@ -211,8 +211,10 @@ docker_manifest_list_version_os_arch() {
 setup_dependencies() {
   echo "PREPARE: Setting up dependencies."
   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 6B05F25D762E3157
-  sudo apt update -y
-  sudo apt install --only-upgrade docker-ce -y
+  sudo apt-get clean
+  sudo rm -r /var/lib/apt/lists/*
+  sudo apt-get update -y
+  sudo apt-get install --only-upgrade docker-ce -y
 }
 
 update_docker_configuration() {
