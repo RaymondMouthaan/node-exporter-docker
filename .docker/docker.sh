@@ -47,7 +47,7 @@ docker_build() {
   echo "DOCKER BUILD: arch - ${ARCH}."
   echo "DOCKER BUILD: arch - ${ARCH_DWNL}."
   echo "DOCKER BUILD: qemu arch - ${QEMU_ARCH}."
-  echo "DOCKER BUILD: blackbox-exporter version - ${BLACKBOX_EXPORTER_VERSION}."
+  echo "DOCKER BUILD: node-exporter version - ${NODE_EXPORTER_VERSION}."
   echo "DOCKER BUILD: docker file - ${DOCKER_FILE}."
 
   docker build --no-cache \
@@ -58,7 +58,7 @@ docker_build() {
     --build-arg OS=${OS} \
     --build-arg ARCH=${ARCH_DWNL} \
     --build-arg QEMU_ARCH=${QEMU_ARCH} \
-    --build-arg BLACKBOX_EXPORTER_VERSION=${BLACKBOX_EXPORTER_VERSION} \
+    --build-arg NODE_EXPORTER_VERSION=${NODE_EXPORTER_VERSION} \
     --file ./.docker/${DOCKER_FILE} \
     --tag ${TARGET}:build-${OS}-${ARCH} .
 }
