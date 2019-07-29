@@ -32,11 +32,11 @@ ENV NODE_ID=none
 COPY tmp/qemu-${QEMU_ARCH}-static /usr/bin/qemu-${QEMU_ARCH}-static
 COPY ./docker-entrypoint.sh /etc/node-exporter/docker-entrypoint.sh
 
-USER=root
+USER root
 RUN chmod +x /etc/node-exporter/docker-entrypoint.sh
 
 EXPOSE     9100
 
-USER=nobody
+USER nobody
 ENTRYPOINT [ "/etc/node-exporter/docker-entrypoint.sh" ]
 CMD [ "/bin/node_exporter" ]
