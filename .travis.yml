@@ -19,7 +19,7 @@ env:
 
 before_install:
   # Prepare Docker
-  - ./.docker/docker.sh prepare
+  - ./docker/docker.sh prepare
 
 install: true
 
