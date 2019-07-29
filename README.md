@@ -7,13 +7,13 @@ Node-exporter-docker
 
 This project builds a docker image and adds qemu-arm-static and uses manifest-tool to push manifest list to docker hub.
 
-Adds the capability of obtain the host hostname and expose it as a value in the container.
+**Adds the capability of obtain the host hostname and expose it as a value in the container.**
 
 ## Architectures
 Currently supported architectures:
-- **linux-arm32v6**
-- **linux-arm64v8**
-- **linux-amd64**
+- **armv7**
+- **arm64**
+- **amd64**
 
 ## Usage
 ### docker run
