@@ -58,7 +58,7 @@ docker_build() {
     --build-arg ARCH=${ARCH} \
     --build-arg QEMU_ARCH=${QEMU_ARCH} \
     --build-arg NODE_EXPORTER_VERSION=${NODE_EXPORTER_VERSION} \
-    --file ./.docker/${DOCKER_FILE} \
+    --file ./docker/${DOCKER_FILE} \
     --tag ${TARGET}:build-${OS}-${ARCH} .
 }
 
