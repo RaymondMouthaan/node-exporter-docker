@@ -37,6 +37,7 @@ RUN chmod +x /etc/node-exporter/docker-entrypoint.sh
 
 EXPOSE     9100
 
-USER nobody
 ENTRYPOINT [ "/etc/node-exporter/docker-entrypoint.sh" ]
+
+USER nobody
 CMD [ "/bin/node_exporter" ]
